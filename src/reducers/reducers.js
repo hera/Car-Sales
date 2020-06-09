@@ -31,14 +31,21 @@ export function additionalPriceReducer(state = initialAdditionalPrice, action) {
 
 export function carReducer(state = initialCar, action) {
     switch (action.type) {
+
         case ADD_FEATURE:
-            return {
-                ...state,
-                features: [
-                    ...state.features,
-                    action.id
-                ]
+            // if a feature has not been added yet
+            if (!(state.features.includes(action.id))) {
+                return {
+                    ...state,
+                    features: [
+                        ...state.features,
+                        action.id
+                    ]
+                }
             }
+            // if that feature is already present
+            return state;
+
         case REMOVE_FEATURE:
             return {
                 ...state,
