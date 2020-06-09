@@ -1,11 +1,11 @@
 import { ADD_FEATURE, REMOVE_FEATURE } from './actionTypes';
 
-export const addFeature = (id) => ({
+export const addFeature = (feature) => ({
     type: ADD_FEATURE,
-    id
+    payload: feature
 });
 
-export const removeFeature = (id) => ({
+export const removeFeature = (feature) => ({
     type: REMOVE_FEATURE,
-    id
+    payload: feature
 });

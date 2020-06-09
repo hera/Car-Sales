@@ -1,5 +1,5 @@
 import { ADD_FEATURE, REMOVE_FEATURE } from '../actions/actionTypes';
-import { addFeature } from '../actions';
+
 
 // Initial states
 
@@ -24,6 +24,10 @@ const initialAdditionalFeatures = [
 
 export function additionalPriceReducer(state = initialAdditionalPrice, action) {
     switch (action.type) {
+        case ADD_FEATURE:
+            return state + action.payload.price;
+        case REMOVE_FEATURE:
+            return state - action.payload.price;
         default:
             return state;
     }
@@ -34,12 +38,12 @@ export function carReducer(state = initialCar, action) {
 
         case ADD_FEATURE:
             // if a feature has not been added yet
-            if (!(state.features.includes(action.id))) {
+            if (!(state.features.includes(action.payload.id))) {
                 return {
                     ...state,
                     features: [
                         ...state.features,
-                        action.id
+                        action.payload.id
                     ]
                 }
             }
@@ -50,7 +54,7 @@ export function carReducer(state = initialCar, action) {
             return {
                 ...state,
                 features: state.features.filter((item) => {
-                    if (item !== action.id) {
+                    if (item !== action.payload.id) {
                         return true;
                     }
                 })
