@@ -6,6 +6,7 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 const App = () => {
+    /*
     const state = {
         additionalPrice: 0,
         car: {
@@ -22,16 +23,17 @@ const App = () => {
             { id: 4, name: 'Rear spoiler', price: 250 }
         ]
     };
+    */
 
     return (
         <div className="boxes">
             <div className="box">
                 <Header />
-                <AddedFeatures car={state.car} />
+                <AddedFeatures />
             </div>
             <div className="box">
-                <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-                <Total car={state.car} additionalPrice={state.additionalPrice} />
+                <AdditionalFeatures />
+                <Total />
             </div>
         </div>
     );
