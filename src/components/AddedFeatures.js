@@ -9,8 +9,8 @@ const AddedFeatures = props => {
             <h6>Added features:</h6>
             {props.car.features.length ? (
                 <ol type="1">
-                    {props.car.features.map(item => (
-                        <AddedFeature key={item.id} feature={item} />
+                    {props.car.features.map((item, index) => (
+                        <AddedFeature key={index} feature={props.additionalFeatures[item]} />
                     ))}
                 </ol>
             ) : (
@@ -21,7 +21,8 @@ const AddedFeatures = props => {
 };
 
 const mapState = (state) => ({
-    car: state.car
+    car: state.car,
+    additionalFeatures: state.additionalFeatures
 });
 
 export default connect(mapState, {})(AddedFeatures);
