@@ -3,8 +3,6 @@ import { ADD_FEATURE, REMOVE_FEATURE } from '../actions/actionTypes';
 
 // Initial states
 
-const initialAdditionalPrice = 0;
-
 const initialCar = {
     price: 26395,
     name: '2019 Ford Mustang',
@@ -21,17 +19,6 @@ const initialAdditionalFeatures = [
 
 
 // Reducers
-
-export function additionalPriceReducer(state = initialAdditionalPrice, action) {
-    switch (action.type) {
-        case ADD_FEATURE:
-            return state + action.payload.price;
-        case REMOVE_FEATURE:
-            return state - action.payload.price;
-        default:
-            return state;
-    }
-}
 
 export function carReducer(state = initialCar, action) {
     switch (action.type) {
