@@ -1,22 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import AddedFeature from './AddedFeature';
 
 const AddedFeatures = props => {
-  return (
-    <div className="content">
-      <h6>Added features:</h6>
-      {props.car.features.length ? (
-        <ol type="1">
-          {props.car.features.map(item => (
-            <AddedFeature key={item.id} feature={item} />
-          ))}
-        </ol>
-      ) : (
-        <p>You can purchase items from the store.</p>
-      )}
-    </div>
-  );
+    return (
+        <div className="content">
+            <h6>Added features:</h6>
+            {props.car.features.length ? (
+                <ol type="1">
+                    {props.car.features.map((item, index) => (
+                        <AddedFeature key={index} feature={props.additionalFeatures[item]} />
+                    ))}
+                </ol>
+            ) : (
+                <p>You can purchase items from the store.</p>
+            )}
+        </div>
+    );
 };
 
-export default AddedFeatures;
+const mapState = (state) => ({
+    car: state.car,
+    additionalFeatures: state.additionalFeatures
+});
+
+export default connect(mapState, {})(AddedFeatures);
